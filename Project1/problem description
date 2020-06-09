@@ -1,5 +1,7 @@
+Pipes
+
 Write a C program called time.c that determines the amount of time necessarytorunacommandfromthecommandline.
-Thisprogramwill be run as "./time <command>" and will report the amount of elapsed timetorunthe specifiedcommand. 
+Thisprogramwill be run as "./time <command>" and will report the amount of elapsed timetorunthe specifiedcomman
 Thiswillinvolveusing fork() and exec() functions, as well as the gettimeofday() function to determine the elapsed time. 
 It will also require the use of two different IPC mechanisms. The general strategy is to fork a child process that will execute the 
 specified command. However, before the child executes the command, it will record a timestamp of the current 
@@ -10,7 +12,10 @@ timesrepresentstheelapsedtimetoexecutethecommand.Theexample output below reports
 Elapsed time: 0.25422 As the parent and child are separate processes, they will need to arrange how the starting time will 
 be shared between them. You will writetwoversionsofthisprogram,eachrepresentingadifferentmethod of IPC.
 
-The second version will use a pipe. The child will write the starting timeto the pipe,and the parentwill read fromit following the termination of the child process. You will use the gettimeofday() function to record the current timestamp. This function is passed a pointer to a struct timeval object, which contains two members: tv sec and t usec. These represent the number of elapsed seconds and microseconds since January 1, 1970(knownasthe UNIX EPOCH).Thefollowingcodesampleillustrates how this function can be used:
+The second version will use a pipe. The child will write the starting timeto the pipe,and the parentwill read fromit following 
+the termination of the child process. You will use the gettimeofday() function to record the current timestamp. This function is 
+passed a pointer to a struct timeval object, which contains two members: tv sec and t usec. These represent the number of elapsed 
+seconds and microseconds since January 1, 1970(knownasthe UNIX EPOCH).Thefollowingcodesampleillustrates how this function can be used:
 struct timeval current;
 gettimeofday(&current,NULL);
 // current.tv sec represents seconds // current.tv usec represents microseconds
